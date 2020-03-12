@@ -22,7 +22,7 @@ function outer() {
   Invoke outer saving the return value into another variable called 'inner'.
 */
   
-// Code Here
+var inner = outer()
 
 
 
@@ -51,7 +51,7 @@ function callFriend(name) {
   (HINT: You will need to pass in arguments to both function invocations)
 */
 
-//Code Here
+let name = 
 
 
 

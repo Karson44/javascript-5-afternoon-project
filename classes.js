@@ -29,6 +29,24 @@
   Call your class Employee and receive all the data in the constructor in the order listed above.
 */
 
+class Employee{
+  constructor(first_name, last_name, email, age){ 
+    this.first_name= first_name;
+    this.last_name = last_name;
+    this.email = email;
+    this.age = age;
+
+  }
+  makeWidget(){
+    return `${this.first_name} ${this.last_name} Widget`
+  }
+}
+
+
+const myInfo = new Employee('Karson', 'Costner', 'kccoug44@gmail.com', 23)
+
+
+
 //Code Here
 
 
@@ -47,7 +65,20 @@
   Call your new class Manager
 */
 
-//Code Here
+class Manager extends Employee{
+  constructor(first_name, last_name, email, age){ 
+    super(first_name, last_name, email, age)
+    this.reports = []
+  }
+  hire(Employee){
+    this.reports.push(Employee)
+  }
+  fire(index){
+    this.reports.splice(index, 1)
+  }
+
+}
+
 
 
 ////////// PROBLEM 3 //////////
@@ -71,8 +102,44 @@
   Call your new class ProgressiveManager
 */
 
-//Code Here
+class ProgressiveManager extends Manager{
+  constructor(first_name, last_name, email, age, reports){ 
+    super(first_name, last_name, email, age, reports)
+    this.title = 'Not a manager'
+    this.bonus = 0
+  }
+  
+  // hire(){
+  //   super.hire
+  managerTitle(){
+  if(this.reports.length === 0){
+    return 'Not a Manager'
+  } else if(this.reports.length <=3){
+    return 'Barely Manager'
+  } else if(this.reports.length <= 10){
+    return 'Mostly Manager'
+  } else if(this.reports.length <=50){
+    return 'Manager'
+  } else if(this.reports.length <= 100){
+    return 'Manager Plus'
+  } else {
+    return 'Bestest Manager'
+  }
+}
 
+hire(Employee){
+  this.reports.push(Employee)
+  this.title = this.managerTitle()
+}
+fire(index){
+  this.bonus+= 100
+  this.reports.splice(index, 1)
+  this.title = this.managerTitle()
+}
+
+}
+
+// let manager = new ProgressiveManager();
 
 
 ////////// PROBLEM 4 - Black Diamond //////////
@@ -97,6 +164,8 @@
         - This function returns an anonymous function that is called when the machine is done rebooting
         - The anonymous function should decrease wear_and_tear_count by 10, and set needs_reboot to false
 */
+
+
 
 //Code Here
 
